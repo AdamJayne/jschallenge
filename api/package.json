@@ -13,6 +13,7 @@
     "dotenv": "^6.1.0",
     "fastify": "^1.13.0",
     "fastify-cors": "^0.2.0",
+    "fastify-sensible": "^0.2.0",
     "node-fetch": "^2.3.0"
   }
 }

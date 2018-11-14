@@ -11,11 +11,12 @@ const fastify = require("fastify")({
 })
 
 fastify.register(require("fastify-cors"))
+fastify.register(require("fastify-sensible"))
 
 fastify.post("/locations", async function (req, res) {
   const { long, lat } = req.body;
   if (!lat || !long ) {
-    res.send("Must have lat and long!");
+    res.send(fastify.httpErrors.badRequest("Must have lat and long!"));
   }
   const api_key = process.env.API_KEY;
   const url = `https://api.yelp.com/v3/businesses/search?latitude=${lat}&longitude=${long}&radius=5000`;
@@ -30,7 +31,7 @@ fastify.post("/locations", async function (req, res) {
         });
     });
   } catch (e) {
-    res.send(fastify.httpErrors(e));
+    res.send(fastify.httpErrors.badRequest(e));
   }
 })
 
