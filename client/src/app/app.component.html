@@ -1,0 +1,16 @@
+
+<router-outlet></router-outlet>
+<div>
+  <ul ngShow="places">
+    <li *ngFor="let place of places">
+
+      <div>
+        <img src="{{place.image_url}}" height="50">
+        <br>
+        <h4>{{place.name}}</h4>
+        <p>{{place.location.address1}}, {{place.location.city}}</p>
+      </div>
+
+    </li>
+  </ul>
+</div>
